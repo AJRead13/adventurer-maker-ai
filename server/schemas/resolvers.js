@@ -36,11 +36,11 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    saveStory: async (parent, { bookData }, context) => {
+    saveStory: async (parent, { storyData }, context) => {
       if (context.user) {
         const updatedUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
-          { $push: { savedBooks: bookData } },
+          { $push: { savedStories: storyData } },
           { new: true }
         );
 
@@ -49,11 +49,11 @@ const resolvers = {
 
       throw AuthenticationError;
     },
-    removeStory: async (parent, { bookId }, context) => {
+    removeStory: async (parent, { storyId }, context) => {
       if (context.user) {
         const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { savedBooks: { bookId } } },
+          { $pull: { savedStories: { storyId } } },
           { new: true }
         );
 
