@@ -1,4 +1,4 @@
-import coverImage from '../../assets/cover/cover-image.jpg';
+import coverImage from "../../assets/cover/cover-image.jpg";
 
 function Header(props) {
 
